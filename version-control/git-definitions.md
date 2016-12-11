@@ -13,3 +13,8 @@ A commit is when we move our work to the repo.  A good commit message is one tha
 
 * What is a merge conflict?
 A merge conflict could arise from different situations, but are essentially when work has been done on the master branch in two different versions or areas, which now differ, and can be difficult to determine which version follows the correct lineage or is more pure, or more correct.  To prevent this problem, we should always do our changes on branches, one or more branches for each contrinutor.  We might even have different branches for different sections we're working on.  But be careful with too many branches that have gone a long while without pushing to the master, as it could become very much out of sync with the versions that colleagues are using, which could potentially be tough to merge all of them together.  So be sure to push to the master as often as possible, or at least pull back from the master to help ensure you are working in the correct progression and alignment with the team.
+
+### About our Mentor:
+
+* Our mentor is Andrew Larson.  
+* He seems to be very experienced, and genuinely interested in our development.
