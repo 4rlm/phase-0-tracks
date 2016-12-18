@@ -1,8 +1,14 @@
-<form name="adventure" action="" method="post">
+<form name="adventure" action="https://httpbin.org/post" method="post">
   <fieldset>
+
+  <div>
+    <label>First Name:</label>
+    <input type="text" name="firstname">
+  </div>
+
     <div>
-      <label>Full name:</label>
-      <input type="text" name="fullname">
+      <label>Last Name:</label>
+      <input type="text" name="lastname">
     </div>
 
     <div>
@@ -31,7 +37,7 @@
       </select>
     </div>
 
-    <div>    
+    <div>
       <label>Choose a date:</label>
       <input type="date" name="date">
     </div>
@@ -41,6 +47,6 @@
       I am prepared to lead this adventure.
     </div>
   </fieldset>
-  
+
   <button type="submit">Save this adventure</button>
 </form>
