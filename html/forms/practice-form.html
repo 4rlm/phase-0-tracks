@@ -5,8 +5,17 @@
         <title>Cool Cities in Japan</title>
     </head>
     <body>
+        <div class="greeting">
+            <h2>Travel Form</h2>
+            <p>Tell us about your travel needs and preferences, so we can help arrange your dream vacation in Japan!</p>
+        </div>
 
         <form class="travel-form" action="success.html" method="post">
+
+            <div>
+                <label for="full_name">Full Name</label>
+                <input type="text" name="full_name">
+            </div>
 
             <div>
                 <label>Travel Interests</label>
@@ -16,12 +25,39 @@
                     <option value="culinary">Culinary</option>
                     <option value="cultural">Cultural</option>
                     <option value="nightlife">Nightlife</option>
-                    <option value="relaxing">Relaxing</option>    
+                    <option value="relaxing">Relaxing</option>
                 </select>
-
             </div>
 
+            <div>
+                <label for="travel_date">Travel Date</label>
+                <input type="date" name="travel_date">
+            </div>
 
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div>
+
+            <div>
+                <label for="radio">Do you have dietary restrictions?</label>
+                <input type="radio" name="yes" value="yes">Yes
+                <input type="radio" name="no" value="no">No
+            </div>
+
+            <div>
+                <label for="additional_information">Additional Information (Such as dietary needs).</label>
+                <br>
+                <textarea name="name"></textarea>
+                <br>
+            </div>
+
+            <div>
+                <input type="checkbox" name="terms" value="agree">
+                I agree to the terms of service.
+            </div>
+
+            <button type="submit" name="button">Submit</button>
         </form>
 
     </body>
