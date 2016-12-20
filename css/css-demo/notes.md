@@ -12,9 +12,13 @@
         * Example 3: `div ol > li em {color: purple;}`
 
 3. Child and Sibling Selectors: https://css-tricks.com/child-and-sibling-selectors/
+
         * Example:
+
                     `ul li { margin: 0 0 5px 0; }`
+
                             vs
+                            
                     `ul > li { margin: 0 0 5px 0; }`
 
 4. CSS3 :nth-child() Selector: http://www.w3schools.com/cssref/sel_nth-child.asp
