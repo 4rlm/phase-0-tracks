@@ -1,0 +1,11 @@
+1. What is the purpose of HTML5 semantic tags? Which ones do you see as most useful?
+HTML5 tags were designed to provide more clarity about the page layout and structure.  Previously, we had to use 'div' and assign class names to each for added control and identification, such as '<div class="nav">'.  We can now just use 'nav'.  This also brings conformity, which makes it easier to work on others' code and for screen readers to better interpret the page.
+
+2. What is the order the browser uses to display elements on a page?
+Browsers load elements from top to bottom.  That's why it's important to have the css link at the top, so that the page loads at the same time as the skin, otherwise it would look odd to first see the skeleton, then a fraction of a second later you see the design.  For this reason, we also reference the js links at the very bottom, because it's first important to be able to see the site properly, before providing manipulation/animation with the js.
+
+3. What did you learn about Sublime in this challenge? Do you think you'll create more handy snippets at a later date?
+I used to use sublime a couple of years ago.  I liked it a lot, until I software engineering friend recommended Atom.  I've been using it very since.  I had been meaning to create custom snippits for a long time, but never got around to it.  So, I'm glad I had this lesson to force me to finally do it.  I'm so glad I did!  I created 4.  One for a full html page, one for full nav, one for full table, and one for a full form including one input for each possible type, so that it is already there, easy to reference and I can delete out extra stuff that I might not need, which is quicker than adding stuff.
+
+4. What concept in this challenge was most difficult for you? How can you improve your understanding of this concept?
+I didn't find any concepts here to be too challenging.  It was great review and it was nice having an opportunity to work with Jesse under Aji's direction.  They were both very professional and nice to work with.  
