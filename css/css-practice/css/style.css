@@ -1,0 +1,17 @@
+h1 {
+    color: orange;
+}
+
+blockquote {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    min-height: 150px;
+    border: 1px solid gray;
+    border-top: 15px solid gray;
+    margin: 1%;
+}
+
+cite {
+    font-weight: bold;
+}
