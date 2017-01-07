@@ -1,5 +1,7 @@
 
 # Release 0: Vampire Interview - Variables
+
+
 interview_permission = nil
 name = nil
 age = nil
@@ -8,6 +10,7 @@ garlicbread = nil
 healthplan = nil
 valid_age = nil
 result = nil
+interview_count = nil
 
 def age_calculator(dob)
     current_time = Time.new
@@ -33,67 +36,78 @@ end
 # name = "Drake Cula"
 # name = "Tu Fang"
 
-# Q1: interview_permission
-puts "\nWelcome!  Thank you for your interest in pursuing a position at our company.  Before moving on to the next step, we would like to ask you a few preliminary questions to learn more about you.  Would that be fine with you?\n"
-puts "\nPlease enter y/n below:\n"
-interview_permission = gets.chomp
+puts "Enter number of surveys/interviews:"
+interview_count = gets.chomp.to_i
 
-unless interview_permission == "y"
-    puts "\nGoodbye!  Sorry that this isn't a good time for you.  Please revisit us when you have a few minutes.\n"
-else
-    # Q1: name
-    puts "\n1) What's your name?\n"
-    puts "\nPlease enter name below:\n"
-    name = gets.chomp
-
-    # Q2: age
-    puts "\n2) How old are you?\n"
-    puts "\nPlease enter numeric age below:\n"
-    age = gets.chomp
-
-    # Q3: dob
-    puts "\nPlease enter full date of birth in mm/dd/yyyy format below:\n"
-    dob = gets.chomp
-
-    # Q4: garlicbread
-    puts "\n4) Oh.  By the way, our company cafeteria serves the most delicious garlic bread. Should we order some for you?\n"
+def survey_questions
+    # Q1: interview_permission
+    puts "\nWelcome!  Thank you for your interest in pursuing a position at our company.  Before moving on to the next step, we would like to ask you a few preliminary questions to learn more about you.  Would that be fine with you?\n"
     puts "\nPlease enter y/n below:\n"
-    garlicbread = gets.chomp
+    interview_permission = gets.chomp
 
-    # Q5: healthplan
-    puts "\n5) Would you like to enroll in the company’s health insurance?\n"
-    healthplan = gets.chomp
-
-
-    calculated_age = age_calculator(dob)
-
-    if calculated_age == age
-        valid_age = true
+    unless interview_permission == "y"
+        puts "\nGoodbye!  Sorry that this isn't a good time for you.  Please revisit us when you have a few minutes.\n"
     else
-        valid_age = false
-    end
+        # Q1: name
+        puts "\n1) What's your name?\n"
+        puts "\nPlease enter name below:\n"
+        name = gets.chomp
 
-    if (name == "Drake Cula") || (name == "Tu Fang")
-        result = "Definitely a vampire."
-    elsif (valid_age == false) && (garlicbread == "n") && (healthplan == "n")
-        result = "Almost certainly a vampire."
-    elsif (valid_age == true) && (garlicbread == "y" || healthplan == "y")
-        result = "Probably not a vampire."
-    elsif (valid_age == false) && (garlicbread == "n" || healthplan == "n")
-        result = "Probably a vampire."
-    else
-        result = "Results inconclusive."
-    end
+        # Q2: age
+        puts "\n2) How old are you?\n"
+        puts "\nPlease enter numeric age below:\n"
+        age = gets.chomp.to_i
 
-    puts "----- Results Summary --------"
-    puts "Name: #{name}"
-    puts "Interview Permission: #{interview_permission}"
-    puts "DOB: #{dob}"
-    puts "Provided Age: #{age}"
-    puts "Calculated Age: #{calculated_age}"
-    puts "Valid Age: #{valid_age}"
-    puts "Healthplan: #{healthplan}"
-    puts "Garlicbread: #{garlicbread}"
-    puts "Result: #{result}"
+        # Q3: dob
+        puts "\nPlease enter full date of birth in mm/dd/yyyy format below:\n"
+        dob = gets.chomp
 
+        # Q4: garlicbread
+        puts "\n4) Oh.  By the way, our company cafeteria serves the most delicious garlic bread. Should we order some for you?\n"
+        puts "\nPlease enter y/n below:\n"
+        garlicbread = gets.chomp
+
+        # Q5: healthplan
+        puts "\n5) Would you like to enroll in the company’s health insurance?\n"
+        healthplan = gets.chomp
+
+
+        calculated_age = age_calculator(dob)
+        if calculated_age == age
+            valid_age = true
+        else
+            valid_age = false
+        end
+
+
+        if (name == "Drake Cula") || (name == "Tu Fang")
+            result = "Definitely a vampire."
+        elsif (valid_age == false) && (garlicbread == "n") && (healthplan == "n")
+            result = "Almost certainly a vampire."
+        elsif (valid_age == true) && (garlicbread == "y" || healthplan == "y")
+            result = "Probably not a vampire."
+        elsif (valid_age == false) && (garlicbread == "n" || healthplan == "n")
+            result = "Probably a vampire."
+        else
+            result = "Results inconclusive."
+        end
+
+        puts "----- Results Summary --------"
+        puts "Name: #{name}"
+        puts "Interview Permission: #{interview_permission}"
+        puts "DOB: #{dob}"
+        puts "Provided Age: #{age}"
+        puts "Calculated Age: #{calculated_age}"
+        puts "Valid Age: #{valid_age}"
+        puts "Healthplan: #{healthplan}"
+        puts "Garlicbread: #{garlicbread}"
+        puts "Result: #{result}"
+
+    end #  unless interview conditional ends
+end  #survey_questions method ends
+
+i=0
+while i<interview_count
+  survey_questions
+  i+=1
 end
