@@ -1,7 +1,6 @@
 
 # Release 0: Vampire Interview - Variables
 
-
 interview_permission = nil
 name = nil
 age = nil

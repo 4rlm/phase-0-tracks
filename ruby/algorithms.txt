@@ -1,0 +1,30 @@
+Part 1: Algorithm for using an elevator
+
+target_floor = 4
+current_floor = 2
+
+1) navigate to elevator bank in hallway.
+2) look at elevator buttons.
+3) push up arrow button
+4) wait for doors to open
+5) enter elevator
+6) turn around, to face doorway
+7) scan left and right sides of side of elevator which contains the door, until buttons containing numbers are located.
+8) push target_floor button
+9) wait for elevator to announce that target_floor has been reached and doors open.
+10) exit elevator
+
+
+Part 2: Daily algorithm for morning train commuting.
+
+1) after getting completely ready, wait for morning alarm to indicate that it's time to leave home for scheduled train.
+2) if not yet ready when alarm sounds, frantically get ready and run out the door.
+3) if late exit, run like it's a marathon.  else, walk briskly until arrival at train station.
+4) scan for underground pedestrian tunnel, then enter.
+5) continue to end of tunnel, then exit to platform.
+6) find optimal waiting location where doors are expected to open.
+7) wait for train to arrive, stop, then open doors.
+8) wait for queued passengers infront of self to enter, but stay close to passengers ahead of you, so aggressive passengers behind you don't cut.
+9) locate optimal seat based on preference order: a) 2nd level seat, but only if front facing.  If only bench style seat remaining, continue to next car to seek 2nd level seating, unless next car apears to be too crowded.  if too crowded, find seat on first level on north side of train (left) as to avoid rising sun from south-east direction.
+10) open mac book and code until final destination reached.
+11) exit train and proceed to office.
