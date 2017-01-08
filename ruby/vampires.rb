@@ -41,36 +41,40 @@ interview_count = gets.chomp.to_i
 
 def survey_questions
     # Q1: interview_permission
-    puts "\nWelcome!  Thank you for your interest in pursuing a position at our company.  Before moving on to the next step, we would like to ask you a few preliminary questions to learn more about you.  Would that be fine with you?\n"
-    puts "\nPlease enter y/n below:\n"
+    puts "Welcome!  May we ask you a few questions? [Enter y/n below]:"
     interview_permission = gets.chomp
 
     unless interview_permission == "y"
         puts "\nGoodbye!  Sorry that this isn't a good time for you.  Please revisit us when you have a few minutes.\n"
     else
         # Q1: name
-        puts "\n1) What's your name?\n"
-        puts "\nPlease enter name below:\n"
+        puts "1) What's your name?  [Enter name below]:"
         name = gets.chomp
 
         # Q2: age
-        puts "\n2) How old are you?\n"
-        puts "\nPlease enter numeric age below:\n"
+        puts "2) How old are you? [Enter numeric age below]:"
         age = gets.chomp.to_i
 
         # Q3: dob
-        puts "\nPlease enter full date of birth in mm/dd/yyyy format below:\n"
+        puts "[Enter full dob in mm/dd/yyyy format below]:"
         dob = gets.chomp
 
         # Q4: garlicbread
-        puts "\n4) Oh.  By the way, our company cafeteria serves the most delicious garlic bread. Should we order some for you?\n"
-        puts "\nPlease enter y/n below:\n"
+        puts "4) Our company cafeteria serves the most delicious garlic bread. Should we order some for you?   [Enter y/n below]:"
         garlicbread = gets.chomp
 
         # Q5: healthplan
-        puts "\n5) Would you like to enroll in the company’s health insurance?\n"
+        puts "5) Would you like to enroll in the company’s health insurance?     [Enter y/n below]:"
         healthplan = gets.chomp
 
+        # Allergy Questions:
+        allergy = nil
+        allergy_list = []
+        until (allergy == "sunshine") || (allergy == "done")
+          puts "Please list any allergies: "
+          allergy = gets.chomp
+          allergy_list << allergy
+        end
 
         calculated_age = age_calculator(dob)
         if calculated_age == age
@@ -78,7 +82,6 @@ def survey_questions
         else
             valid_age = false
         end
-
 
         if (name == "Drake Cula") || (name == "Tu Fang")
             result = "Definitely a vampire."
@@ -102,6 +105,7 @@ def survey_questions
         puts "Healthplan: #{healthplan}"
         puts "Garlicbread: #{garlicbread}"
         puts "Result: #{result}"
+        puts "Allergies: #{allergy_list}"
 
     end #  unless interview conditional ends
 end  #survey_questions method ends
@@ -111,3 +115,5 @@ while i<interview_count
   survey_questions
   i+=1
 end
+
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
