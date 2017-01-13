@@ -35,8 +35,8 @@ name = gets.chomp
 
 def name_rotator(orig_name)
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    orig_vows = 'aeiouy' * 2
-    orig_cons = alphabet.delete('aeiouy') * 2
+    orig_vows = 'aeiouyaeiouy'
+    orig_cons = alphabet.delete('aeiouy')
     vows = orig_vows.chars
     cons = orig_cons.chars
     capitalize_original = orig_name.split.map(&:capitalize).join(' ')
@@ -59,8 +59,11 @@ def name_rotator(orig_name)
     encrypted_name = name.join
     split_encrypted = encrypted_name.split(' ')
     giv_name_encrypted = split_encrypted[0].capitalize
-    sur_name_encrypted = split_encrypted[1].capitalize
-    swapped_encrypted_full_name = "#{sur_name_encrypted} #{giv_name_encrypted}"
+    mid_name_encrypted = split_encrypted[1].capitalize unless split_encrypted[1] == nil
+    sur_name_encrypted = split_encrypted[2].capitalize unless split_encrypted[2] == nil
+
+
+    swapped_encrypted_full_name = "#{sur_name_encrypted} #{mid_name_encrypted} #{giv_name_encrypted}"
     puts "------------------------------"
     puts "Original Name: #{capitalize_original}"
     puts "Encrypted Name: #{swapped_encrypted_full_name}"
