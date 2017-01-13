@@ -1,5 +1,9 @@
+# 5.2 Arrays and Hashes
 
-# client's name, age, number of children, decor theme, and so on
+=begin
+---------Pseudocode------------
+Survey will prompt user to ask 5 questions to client, such as name, age, number of children, decor theme, etc via gets.chomp.  Answers will be saved in hash, then print at end of survey.  Then user will be prompted with option to edit any answers.  If desired, user can select which answer to edit, rather than having to loop through each and every question again.
+=end
 
 client_survey = {
     name: nil,
