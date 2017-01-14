@@ -1,46 +1,25 @@
 # 5.5 Solo Challenge: Manipulating Strings with Iteration
 
-# A Few New String and Array Method: In order to manipulate a string's value, we can convert it into an array, iterate through its letters, and then join the array back into a string.
+spy_hash = {
+    true_name: nil,
+    encrypted_name: nil
 
-# Example:
-# p letters = "hello world".split('')
-# p letters.class
-# p letters.map! { |letter| letter.next }
-# p letters
-# p new_string = letters.join('')
+}
 
-# You'll probably see .split used often, but .chars is equivalent:
-#p "hello".chars # => ["h","e","l","l","o"]
+def name_encryptor(spy_hash)
 
-# You can chain methods in Ruby, so if you were feeling terse, you could simply do this in IRB:
-#p "hello world".chars.map!{|letter| letter.next}.join('')
+    # loop do
 
-# You can change the argument given to .split in order to make an array of words instead of characters. Try it:
-# p "hello world".split(' ')
+    puts "Enter a name to encrypt"
+    answer = gets.chomp
 
-########################
-
-# Release 0: Attempt a Tricky Algorithm
-
-# 1. Swapping the first and last name.
-
-
-####################
-
-# name = "Adam Booth".downcase
-
-# name = nil
-puts "Enter a name to encrypt:"
-name = gets.chomp
-
-def name_rotator(orig_name)
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     orig_vows = 'aeiouyaeiouy'
     orig_cons = alphabet.delete('aeiouy')
     vows = orig_vows.chars
     cons = orig_cons.chars
-    capitalize_original = orig_name.split.map(&:capitalize).join(' ')
-    downcase_original = orig_name.downcase
+    capitalize_original = answer.split.map(&:capitalize).join(' ')
+    downcase_original = answer.downcase
     name = downcase_original.chars
 
     name = name.map! {|ch|
@@ -62,12 +41,128 @@ def name_rotator(orig_name)
     mid_name_encrypted = split_encrypted[1].capitalize unless split_encrypted[1] == nil
     sur_name_encrypted = split_encrypted[2].capitalize unless split_encrypted[2] == nil
 
-
     swapped_encrypted_full_name = "#{sur_name_encrypted} #{mid_name_encrypted} #{giv_name_encrypted}"
-    puts "------------------------------"
-    puts "Original Name: #{capitalize_original}"
-    puts "Encrypted Name: #{swapped_encrypted_full_name}"
-    puts "------------------------------"
+    spy_hash[:true_name] = capitalize_original
+    spy_hash[:encrypted_name] = swapped_encrypted_full_name
+
+    # testing version to hash
+
+
+    puts "\nYour names have been saved!\n"
+
+    choice(spy_hash)
+    # end #end of loop do
+
+
 end
 
-name_rotator(name)
+def choice(spy_hash)
+    puts "Type [c] to continue or [r] to view results."
+    answer = gets.chomp
+
+    if answer == "c"
+        name_encryptor(spy_hash)
+    elsif answer == "r"
+        name_encryptor_results(spy_hash)
+    else
+        puts "Type [c] to continue or [r] to view results."
+    end
+end
+
+
+# loop do
+#     puts "Press 'Enter' to add more names or type 'quit'."
+#     input = gets.chomp
+#     name_encryptor(spy_hash)
+#     break if input == 'quit'
+#     name_encryptor_results(spy_hash)
+# end
+
+def name_encryptor_results(spy_hash)
+
+
+        # puts "Press 'Enter' to add more names or type 'quit'."
+        # input = gets.chomp
+        # name_encryptor(spy_hash)
+        # break if input == 'quit'
+
+        puts "==== Names Encrypted: ===="
+        puts "------------------------------"
+        puts "Original Name: #{spy_hash[:true_name]}"
+        puts "Encrypted Name: #{spy_hash[:encrypted_name]}"
+        puts "------------------------------"
+
+        # puts
+        # puts "Would you like to encrypt more names? [y/n]"
+        # user_response = gets.chomp
+        # if user_response == "y"
+        #     name_encryptor(spy_hash)
+        # else
+        #     puts "Your inputed data has been saved!"
+        # end
+
+
+
+end
+
+
+
+
+name_encryptor(spy_hash)
+
+
+###############
+
+
+    # loop do
+    #     puts "You may encrypt more names or enter 'quit' to exit."
+    #     break if input == 'quit'
+    #     survey_results_method(client_survey)
+    # end
+
+#################
+
+
+# Basic - Step 1: .store method
+# test_hash = {}
+# puts "Enter New Name"
+# answer = gets.chomp
+# split_name = answer.split(" ")
+# fname = split_name[0]
+# lname = split_name[1]
+# test_hash.store(fname, lname)
+# puts test_hash
+
+
+# Loop - Step 2: .store method
+test_hash = {}
+
+def core(test_hash)
+    puts "Enter New Name"
+    answer = gets.chomp
+    split_name = answer.split(" ")
+    fname = split_name[0]
+    lname = split_name[1]
+    test_hash.store(fname, lname)
+    # puts test_hash
+    choice(test_hash)
+end
+
+def choice(test_hash)
+    puts "Enter [a] to add more names, or [r] for results."
+    answer = gets.chomp
+    if answer == "a"
+        core(test_hash)
+    elsif answer == "r"
+        results(test_hash)
+    else
+        "Enter [a] to add more names, or [r] for results."
+    end
+end
+
+
+def results(test_hash)
+    puts test_hash
+end
+
+core(test_hash)
