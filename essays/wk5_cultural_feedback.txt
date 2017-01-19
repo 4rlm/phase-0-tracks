@@ -1,0 +1,39 @@
+Week 5 Cultural Discussion
+50 50 unread replies. 50 50 replies.
+Pairing and Giving Feedback
+By now you should have given and received feedback from your pairing partners, so you'll be evaluating pairing, the feedback you've received, and how it felt to receive the feedback.
+
+Pairing
+* What was it like to pair with others to solve challenges?
+=> I enjoyed pairing with peers to solve challenges; especially as we progressed and started working on more complex challenges.  It's nice to see how they approach challenges.  It's nice to see different perspectives of achieving a goal.
+
+* What aspects of pairing were particularly fun or rewarding?
+=> The most rewarding aspects of pair working have been the ability to connect with others who are going through the same challenges as I am.  Much of this course is done remotely, so connecting with others makes it feel more like a real classroom and more collaborative.
+
+* What aspects of pairing were frustrating and difficult?
+=> The most frustrating or difficult aspects of pair work have been the time constraints and the pressure to perform on-the-spot.  I am a planner by nature and I don't feel comfortable taking action without careful deliberation.  This is also true in my personal life.  I am more reserved and quiet and typically only talk about things that I have first thought through.  So, with these pair work challenges, I don't have that ability.  I don't feel appropriate to sit back and say, "Hmm, let me think about this for 20 minutes and get back to you."  Also, I work best without an audience.  It kind of feels like a colleague or boss hovering over my desk watching every word I type on a word document and interjecting to say, "Hey, you forgot a period there, or there is a better word for what you're using there."  The challenge is that the other person never knows how the other's natural workflow is.
+
+I would prefer if we could either:
+1) Work on solo challenges alone, then come together to analyze how the other achieved the goals. -OR-
+2) We can choose between different challenges, then we talk them over and chose one, then talk about how to approach it, then we divide up our tasks, then later combine the code to make a bigger project.
+
+For example, we talk about the data types and functionality, then one person designs the datasets and accessing it, and layout.  The other works on the algorithms and logic.
+
+Feedback
+* How did you feel when you received your feedback?
+=> I felt good hearing feedback.
+
+* Was the feedback you received helpful to your learning?
+=> Yes.  I believe the feedback was constructive and helpful for my learning.
+
+* Based on the feedback you've received, what are you going to do to improve next time you pair?
+=> Most of my pairing sessions went very well, except for my first one.  That didn't go well, because I wasn't prepared.  After then, I have been making sure I'm prepared, have read the criteria and have some ideas ready on how to solve the challenge.
+
+* How was it to give feedback? What can you do to improve your own feedback?
+=> I like complimenting people, but I don't like telling people anything that might make them feel uncomfortable, so it's not easy.  I usually like to share a few workflow tips I noticed during the session and how it could be improved; for efficiency.  For example, I might ask if they are aware of a few shortcuts in Sublime/Atom, which could help them manipulate the contents in the file better.  I might also suggest they think about other built in methods, objects, or classes that I think would be helpful and ask them if they are already aware of them.  I think those are the type of feedback I would like to receive, too. - efficiency improvements.
+
+* What was most difficult for you when giving feedback to your pair?
+=> Mentioned above.
+
+Overall, what do you think of using pairing and feedback to guide your learning?
+=> I like it very much, but it takes much longer to work together than to do it on my own.  So, although I enjoy it very much, when I'm pressed for time or feeling overwhelmed I wish I could just do it on my own.  But when life is calmer, and I'm not feeling rushed, I enjoy it very much.
