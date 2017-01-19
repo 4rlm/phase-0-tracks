@@ -4,7 +4,7 @@
 =begin
 * classes: include instructions for both attributes (characteristics) and methods (behavior).
 * instance of the class: each member of a class.
-* First defined a class, then make as many instances of it as you'd like.
+* First define a class, then make as many instances of it as you'd like.
 
 * class methods: Methods called on a class.
 * instance methods: Methods called on an instance .
