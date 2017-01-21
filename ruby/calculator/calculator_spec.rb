@@ -88,7 +88,7 @@ describe Calculator do
 
     it "divides two integers" do
         # calculator = Calculator.new  # replaced by: let(:calculator) { Calculator.new }
-        expect(calculator.)
+        expect(calculator.divide(6,3)).to eq 2
     end
 
 

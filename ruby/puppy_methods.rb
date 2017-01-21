@@ -1,6 +1,7 @@
 ## 6.2 Mandatory Pairing: Instance Methods ##
 
 # Release 0: Add Behavior to a Class #
+
 =begin
 class Puppy
 
@@ -48,7 +49,7 @@ puts spot.speak(5) # instance can now "Woof" 5 times. (R0.2) #
 puts spot.roll_over # instance can now "*rolls over*". (R0.3) #
 puts spot.dog_years(10) # instance can now convert human years to dog years. (R0.4) #
 puts spot.sit # instance can now "*sit*". (R0.5) #
-=end
+
 #####################
 
 # Release 1: Declare an Initialize Method #
@@ -56,30 +57,50 @@ puts spot.sit # instance can now "*sit*". (R0.5) #
 # Without changing your driver code, run the program. Does initialize run? When? == YES.  Beginning. (R1.2) #
 
 #####################
+=end
 
+
+####################
 # Release 2: Write Your Own Class, and Experiment! #
-instance_hash = {}
-class Gymnast
+#####################
+
+class Athlete
+    attr_reader :name
+
+    def initialize(name)
+        @name = name
+    end
+
     def flip
-        return "flips"
+        "flips"
     end
 
     def jump
-        return "jumps"
+        "jumps"
     end
+
 end
 
-50.times do |instance|
-    instance = Gymnast.new
-    key = instance
-    value = []
-    value[0] = instance.flip
-    value[1] = instance.jump
-    instance_hash.store(key, value)
+#### DRIVER CODE ####
+names = []
+
+50.times do |i|
+    random_name = "Athlete#{i+=1}"
+    names << random_name
 end
 
-each_athlete = instance_hash.each do |k,v|
-    puts "#{k} #{v[0]} and #{v[1]}"
+athletes = []
+
+names.each do |name|
+    puts "Creating an athlete named #{name}..."
+    athletes << Athlete.new(name)
+    puts "There are now #{athletes.length} Athlete instances in the array."
+    puts "------------------"
+end
+
+athletes.each do |athlete|
+    puts "#{athlete.name} #{athlete.flip} & #{athlete.jump}"
+    puts "------------------"
 end
 
 #####################
