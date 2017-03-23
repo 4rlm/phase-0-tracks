@@ -3,7 +3,11 @@
 # The state, or attributes.
 
 # Releases 0-4 #
-#############################
+
+############################
+puts "#{"="*30}"
+############################
+
 class Santa
     def initialize(gender, ethnicity)
         @gender = gender
@@ -68,16 +72,15 @@ end
 
 ###########
 ## (1) DRIVER CODE: Simple ##
-=begin
 santa1 = Santa.new("female", "Asian")
 puts santa1.speak
 puts santa1.eat_milk_and_cookies("chocolate chip cookie")
-=end
-##########
 
-##########
+############################
+puts "#{"="*30}"
+############################
+
 # (2) DRIVER CODE: Medium ##
-=begin
 santas = []
 santas << Santa.new("agender", "black")
 santas << Santa.new("female", "Latino")
@@ -91,7 +94,7 @@ santas.each do |santa|
     puts santa.speak
     puts santa.eat_milk_and_cookies('chocolate chip cookies')
 end
-=end
+
 ###########
 
 ###########
@@ -122,7 +125,9 @@ santas.each do |santa|
     puts
 end
 
-#############################
+############################
+puts "#{"="*30}"
+############################
 
 
 
@@ -139,7 +144,7 @@ end
 # name
 # location
 
-=begin
+
 class Reindeer
     def initialize(name)
         # Attributes inside Instance Variable (has @) #
@@ -178,8 +183,11 @@ reindeer.about
 reindeer.take_off(10000)
 reindeer.land("Paris")
 reindeer.about
-=end
-#############################
+
+############################
+puts "#{"="*30}"
+############################
+
 
 
 ##############
@@ -190,7 +198,7 @@ reindeer.about
 # getter methods = wrap around method to make data accessible from outside.
 # setter methods = make data writable from outside.
 
-=begin
+
 class Reindeer
     def initialize(name)
         @name = name
@@ -229,9 +237,11 @@ reindeer.take_off(3000)
 reindeer.land("Cape Town")
 reindeer.name = "The reindeer Formerly Known as Dasher."
 puts "#{reindeer.name} is in #{reindeer.location}."
-=end
 
-#############################
+
+############################
+puts "#{"="*30}"
+############################
 
 
 ##############
@@ -240,7 +250,6 @@ puts "#{reindeer.name} is in #{reindeer.location}."
 # Syntactic Sugar for Setter: attr_accessor
 ##############
 
-=begin
 
 class Reindeer
     # Anytime you need to provide access to instance variables and attributes outside of a class, use attr_reader, attr_writer, or attr_accessor .
@@ -297,8 +306,9 @@ reindeer.land("Cape Town")
 reindeer.name = "The reindeer Formerly Known as Dasher."
 puts "#{reindeer.name} is in #{reindeer.location}."
 
-=end
-#############################
+############################
+puts "#{"="*30}"
+############################
 
 
 
@@ -309,7 +319,6 @@ puts "#{reindeer.name} is in #{reindeer.location}."
 
 #We're making an empty array, and then adding a lot of Santa instances to it. (If we wanted to interact with the Santas, we would need to loop through the array and call methods on each one. If you're not sure how this works, here's some sample code (Links to an external site.) to play with.)
 
-=begin
 class Puppy
     def initialize(name)
         @name = name
@@ -335,5 +344,7 @@ puts "Testing each Puppy instance in the array to make sure it can bark..."
 puppies.each do |puppy|
     puppy.bark
 end
-=end
-#############################
+
+############################
+puts "#{"="*30}"
+############################
