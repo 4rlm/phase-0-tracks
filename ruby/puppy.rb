@@ -40,32 +40,35 @@ Protect
 =end
 
 ############################
+puts "#{"="*30}"
+############################
 
 ## Release 1: Declare Your Class and Create an Instance in IRB ##
-=begin
+
 class Puppy
 end
 
 duchess = Puppy.new
 fido = Puppy.new
 spot = Puppy.new
-=end
 
 # Check Methods and Classes #
-# puts Puppy.methods
-# puts Puppy.class
+puts Puppy.methods
+puts Puppy.class
 
-# puts spot.class # => Class
-# puts  duchess == fido # => Puppy
-# puts fido.instance_of?(Array) # => false
-# puts fido.instance_of?(Puppy) # => true
-# puts spot.play_dead # => undefined method `play_dead' for #<Puppy:0x007ff047903230> (NoMethodError)
+puts spot.class # => Class
+puts  duchess == fido # => Puppy
+puts fido.instance_of?(Array) # => false
+puts fido.instance_of?(Puppy) # => true
+puts spot.play_dead # => undefined method `play_dead' for #<Puppy:0x007ff047903230> (NoMethodError)
 
+############################
+puts "#{"="*30}"
 ############################
 
 ## Release 2: Practice Using Class Methods and Instance Methods ##
 # Run this code in IRB to create a new string using a class method:
-=begin
+
 class String
 end
 
@@ -82,4 +85,3 @@ puts  str = "some string"
 puts greeting = String.new("hello")
 puts greeting.length
 puts greeting.upcase
-=end
