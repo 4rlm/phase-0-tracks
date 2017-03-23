@@ -24,7 +24,10 @@
 ## Release 0: Practice Using Modules ##
 #########
 
-=begin
+############################
+puts "\n\n#{"="*30}\n\n"
+############################
+
 # 1) SecureRandom (must: require)
 require 'SecureRandom'
 puts "SecureRandom.class: #{SecureRandom.class}"
@@ -47,14 +50,15 @@ puts "Math.singleton_methods: #{Math.singleton_methods}"
 puts "SecureRandom.singleton_methods: #{SecureRandom.singleton_methods}"
 puts "------------------------"
 
-=end
+
+############################
+puts "\n\n#{"="*30}\n\n"
 ############################
 
 #########
 ## Release 1: Write a Simple Module ##
 #########
 
-=begin
 # 1. Declare your module. The syntax for declaring a module is pretty simple:
 module Shout
   def self.yell_angrily(words)
@@ -73,7 +77,9 @@ p Shout.singleton_methods
 p Shout.yell_angrily("Darn it")
 p Shout.yelling_happily("Whahoo")
 
-=end
+
+############################
+puts "\n\n#{"="*30}\n\n"
 ############################
 
 
@@ -82,7 +88,6 @@ p Shout.yelling_happily("Whahoo")
 #########
 
 ## MODULE DECLARATION ##
-=begin
 
 module Flight
   def take_off(altitude)
@@ -106,8 +111,11 @@ puts bird.take_off(800)
 plane = Plane.new
 puts plane.take_off(30000)
 
-=end
+
 ############################
+puts "\n\n#{"="*30}\n\n"
+############################
+
 
 
 #########
@@ -150,4 +158,4 @@ puts "A happy worker shouts, '#{happy_worker}'"
 puts "An angry sports fan shouts, '#{angry_sports_fan}'"
 puts "A happy sports fan shouts, '#{happy_sports_fan}'"
 
-############################
+puts "\n\n#{"="*30}\n\n"
