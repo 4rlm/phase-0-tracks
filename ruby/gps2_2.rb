@@ -1,8 +1,36 @@
 # https://github.com/4rlm/phase-0-tracks/blob/master/ruby/gps2_2.rb
+#######################
+# Method to create a list
+# input: string of items separated by spaces (example: "carrots apples cereal pizza")
+# steps:
+  # [fill in any steps here]
+  # set default quantity
+  # print the list to the console [can you use one of your other methods here?]
+# output: [what data type goes here, array or hash?]
+
+# Method to add an item to a list
+# input: list, item name, and optional quantity
+# steps: promt user for items, process items.
+# output: confirm items, prompt for next step.
+
+# Method to remove an item from the list
+# input: items
+# steps: promt user for items, process items.
+# output: confirm items, prompt for next step.
+
+# Method to update the quantity of an item
+# input: items
+# steps: promt user for items, process items.
+# output: confirm items, prompt for next step.
 
 
-# https://github.com/4rlm/phase-0-tracks/blob/master/ruby/gps2_2.rb
+# Method to print a list and make it look pretty
+# input: items
+# steps: puts the items and options for nex steps.
+# output: confirm items, prompt for next step.
 
+
+######################
 msg = {
 creator_msg: "\n\n#{"="*40}\n\nWelcome to the Grocery List App",
 adder_msg: "\n\nPlease add items to the grocery list, each separated with a space.",
@@ -84,3 +112,22 @@ def options(choice, master_list, msg)
 end
 
 creator(msg)
+
+
+##########################
+
+# Release 4: Reflect
+# On your own, add a commented reflection section to your gps2_2.rb file. Answer the following questions in your reflection:
+#
+# What did you learn about pseudocode from working on this challenge?
+# It was helpful to plan out the app.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+# Arrays are often easier and more familiar, but hashes are easier to access when targeting specific items.
+# What does a method return?
+# Method returns the final value at the end of it.
+# What kind of things can you pass into methods as arguments?
+# You can pass through just about anything throug the arguments.
+# How can you pass information between methods?
+# You can pass info between methods by using the arguments and parameters.
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+# The exercise was very fun and I learned alot.  But I think the concepts were very straightforward.
