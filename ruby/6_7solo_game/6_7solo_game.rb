@@ -1,19 +1,21 @@
-class Game
+class SoloGame
+    attr_accessor :goal_hash
     def initialize(player1, player2)
         @player1 = player1
         @player2 = player2
         @msg ={
-                wel1_target: "#{"-"*40}\n\nHi #{@player1},\nEnter a word for #{player2} to guess.\n\n",
+                wel1_target: "#{"-"*40}\n\nHi #{@player1},\nEnter a secret word for #{player2} to guess.\n\n",
                 wel1_cat: "Enter a category",
-                wel1_uniq: "Enter something unique about the target word.",
-                wel2_greet: "#{"-"*40}\n\nHi #{@player2}!  Welcome to the game.\n\n#{@player1} has chosen a word for you to guess.\nWould you like to try to guess what it is?",
+                wel1_uniq: "Enter something unique about the secret word.",
+                wel2_greet: "#{"-"*40}\n\nHi #{@player2}!  Welcome to the game.\n\n#{@player1} has entered a secret word for you to guess.\nWould you like to try to guess what it is?",
                 wel2_yn: "Enter Y for Yes, or N for No.",
                 wel2_bye:  "#{"-"*40}\n\nOh, #{@player2}, Such a shame!\nYou're missing out on a lot of fun!\nBye!\n\n",
                 hinter_rule: "#{"-"*40}\n\nAwesome!\nThe rules are simple:\n* 10 points for each correct letter.\n* Unlimited guesses, but game-over if 3 consecutive wrong guesses.",
-                hinter_list: "Here are a few hints about it..",
+                hinter_list: "\n\nHere are a few hints about the secret word...",
                 guesser_prompt: "Please guess a letter or the whole word..."
             }
         @goal_hash = {}
+        @hinted = false
     end
 
     def welcome_p1
@@ -40,28 +42,25 @@ class Game
             elsif confirm.downcase == "n"
                 puts @msg[:wel2_bye]
                 return
-                pass = true
             else
                 puts "\n\nSorry #{player2}, #{confirm} is an invalid response."
                 puts @msg[:wel2_yn]
-                pass = false
             end
         end
     end
 
-
     def hinter
-        hinted = false
-        if hinted == false
+        unless @hinted
             puts @msg[:hinter_rule]
-            hinted = true
+            @hinted = true
         end
 
         puts @msg[:hinter_list]
+
         puts "Length: #{@goal_hash[:target].length}"
         puts "Vowels: #{vowels = voweler(@goal_hash[:target])}"
-        puts "Category: #{@msg[:cat]}"
-        puts "Unique: #{@msg[:unique]}"
+        puts "Category: #{@goal_hash[:cat]}"
+        puts "Unique: #{@goal_hash[:unique]}"
 
         guesser
     end
@@ -69,9 +68,44 @@ class Game
     def guesser
         puts @msg[:guesser_prompt]
         answer = gets.chomp
+        logic(answer)
     end
 
+    def logic(answer)
+        targets = @goal_hash[:target].split("")
+        hiddens = @goal_hash[:target].split("")
+        displays = []
+        answers = []
 
+        answers << answer
+        wrongs = answers - targets
+        answers.each{|x| hiddens.delete(x)}
+        rights = targets - hiddens
+        points = rights.count*10
+
+        targets.each do |x|
+            if hiddens.include?(x)
+                displays.push(" _ ")
+            else
+                displays.push(" #{x} ")
+            end
+        end
+
+        score = {secret: displays.join(""), points: rights.count*10, right: rights.join(" "), wrong: wrongs.join(" "), total: answers.join(" ")}
+        score_printer(score)
+    end
+
+    def score_printer(score)
+        divider = "\n\n#{"-"*30}\n\n"
+        puts divider
+        puts "Secret Word: #{score[:secret]}\n\n"
+        puts "Your ScoreBoard..."
+        puts "Point Total: #{score[:points]}"
+        puts "Correct Letters: #{score[:right]}"
+        puts "Wrong Letters: #{score[:wrong]}"
+        puts "Total Letters Entered: #{score[:total]}"
+        puts divider
+    end
 
     def voweler(str)
         str.scan(/[aeoui]/).count
@@ -79,9 +113,6 @@ class Game
 
 end
 
-player1 = Game.new("Adam", "Gahee")
-player1.welcome_p1
-
-
-player2 = Game.new("Adam", "Gahee")
-player2.welcome_p2
+game1 = SoloGame.new("Adam", "Gahee")
+game1.welcome_p1
+game1.welcome_p2
