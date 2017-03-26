@@ -84,33 +84,26 @@ class SoloGame
     end
 
     def logic(answer)
-        unless @goal[:answers]
-            @goal[:answers] = []
+
+        if @goal[:answers]
+            @goal[:answers].push(answer)
+        else
+            answers = []
+            answers.push(answer)
+            @goal[:answers] = answers
         end
-        @goal[:answers] << answer
-        puts "1 >>>>>>>>>>> @goal[:answers #{@goal[:answers}"
 
         wrongs = @goal[:answers] - @goal[:targets]
-        puts "2 >>>>>>>>>>> wrongs #{wrongs}"
-        puts "3 >>>>>>>>>>> @goal[:hiddens] #{@goal[:hiddens]}"
-
-        @goal[:answers].each{|x| @goal[:hiddens].delete(x)}
-        puts "4 >>>>>>>>>>> @goal[:hiddens] #{@goal[:hiddens]}"
-
-        rights = @goal[:targets] - @goal[:hiddens]
-        puts "5 >>>>>>>>>>> rights #{rights}"
-
+        @goal[:answers].each{|x| @goal[:hiddens][0].delete(x)}
+        rights = @goal[:targets][0] - @goal[:hiddens][0]
         points = rights.count*10
 
         displays = []
-        @goal[:targets].each do |x|
-            puts "6 >>>>>>>>>>> displays.push x #{x}"
+        @goal[:targets][0].each do |x|
 
-            if @goal[:hiddens].include?(x)
-                puts "7 >>>>>>>>>>> ' _ ' "
+            if @goal[:hiddens][0].include?(x)
                 displays.push(" _ ")
             else
-                puts "8 >>>>>>>>>>> displays.push #{x} "
                 displays.push(" #{x} ")
             end
         end
