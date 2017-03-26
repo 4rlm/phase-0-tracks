@@ -1,13 +1,15 @@
 class Game
-    def initialize
+    def initialize(player1, player2)
+        @player1 = player1
+        @player2 = player2
         @msg ={
-                wel1_target: "#{"-"*40}\n\nPlayer 1, enter a word for your oponent to guess.\n\n",
+                wel1_target: "#{"-"*40}\n\nHi #{@player1},\nEnter a word for #{player2} to guess.\n\n",
                 wel1_cat: "Enter a category",
                 wel1_uniq: "Enter something unique about the target word.",
-                wel2_greet: "#{"-"*40}\n\nHi Player 2!  Welcome to the game.\n\nPlayer 1 has chosen a word for you to guess.\nWould you like to try to guess what it is?",
+                wel2_greet: "#{"-"*40}\n\nHi #{@player2}!  Welcome to the game.\n\n#{@player1} has chosen a word for you to guess.\nWould you like to try to guess what it is?",
                 wel2_yn: "Enter Y for Yes, or N for No.",
-                wel2_bye:  "#{"-"*40}\n\nOh, Player 2, Such a shame!\nYou're missing out on a lot of fun!\nBye!\n\n",
-                hinter_rule: "#{"-"*40}\n\nAwesome!\nThe rules are simple:\nPoints: 10 points for each correct letter.\nGuesses: Unlimited, but game-over if 3 consecutive wrong guesses.",
+                wel2_bye:  "#{"-"*40}\n\nOh, #{@player2}, Such a shame!\nYou're missing out on a lot of fun!\nBye!\n\n",
+                hinter_rule: "#{"-"*40}\n\nAwesome!\nThe rules are simple:\n* 10 points for each correct letter.\n* Unlimited guesses, but game-over if 3 consecutive wrong guesses.",
                 hinter_list: "Here are a few hints about it..",
                 guesser_prompt: "Please guess a letter or the whole word..."
             }
@@ -40,7 +42,7 @@ class Game
                 return
                 pass = true
             else
-                puts "\n\nSorry, #{confirm} is an invalid response."
+                puts "\n\nSorry #{player2}, #{confirm} is an invalid response."
                 puts @msg[:wel2_yn]
                 pass = false
             end
@@ -77,9 +79,9 @@ class Game
 
 end
 
-player1 = Game.new
+player1 = Game.new("Adam", "Gahee")
 player1.welcome_p1
 
 
-player2 = Game.new
+player2 = Game.new("Adam", "Gahee")
 player2.welcome_p2
