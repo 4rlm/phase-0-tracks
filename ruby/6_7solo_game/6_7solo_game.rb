@@ -4,6 +4,7 @@ class SoloGame
         @player1 = player1
         @player2 = player2
         @divider = "\n#{"-"*30}\n"
+        @clear = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
         @msg ={
                 wel1_target: "#{@divider}Hi #{@player1},\nEnter a secret word for #{player2} to guess.\n\n",
                 wel1_cat: "Enter a category",
@@ -11,27 +12,27 @@ class SoloGame
                 wel2_greet: "#{@divider}Hi #{@player2}!  Welcome to the game.\n\n#{@player1} has entered a secret word for you to guess.\nWould you like to try to guess what it is?",
                 wel2_yn: "Enter Y for Yes, or N for No.",
                 wel2_bye:  "#{@divider}Oh, #{@player2}, Such a shame!\nYou're missing out on a lot of fun!\nBye!\n\n",
-                hinter_rule: "#{@divider}Rules...\n* 10 points for each correct letter.\n* 100 Bonus Points if you complete the challange!\n* Maximum guesses",
+                hinter_rule: "#{@divider}Rules...\n* 10 points for each correct letter.\n* 100 Bonus Points if you complete the challange!\n* 3 Wrong Guesses Allowed\n* Total Guesses Allowed",
                 hinter_list: "#{@divider}Hints...",
-                guesser_prompt: "#{@divider}Please guess a letter or the whole word...\n\n"
+                guesser_prompt: "#{@divider}Please guess only 1 letter of the secret word...\n\n",
+                ump_win_msg: "#{@clear}#{@divider}Congratulations!  You get 100 Bonus Points!\nYou guessed the Secret Word: ",
+                ump_0_msg: "#{@clear}#{@divider}Game Over!  You reached the maximum attempts!",
+                ump_success_msg: "#{@clear}#{@divider}Wow!  The letter you guessed is correct!\nKeep going!  You're on a winning streak.\nRemaining guesses: ",
+                ump_fail_msg: "#{@clear}#{@divider}Yikes!  That's the wrong answer.\nDon't worry.  You can guess again.\nRemaining guesses: "
             }
         @goal = {}
         @hinted = false
         @win = false
         @fail = false
-        @clear = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     end
 
     def welcome_p1
-
         puts "#{@clear}#{@msg[:wel1_target]}"
-
         target = gets.chomp
         @goal[:target] = target
 
         targets = []
         hiddens = []
-
         @goal[:targets] = targets.push(target.split(""))
         @goal[:hiddens] = hiddens.push(target.split(""))
 
@@ -66,8 +67,7 @@ class SoloGame
     def hinter
         unless @hinted
             # puts @msg[:hinter_rule]
-            puts "#{@msg[:hinter_rule]}: #{@goal[:target].length}"
-
+            puts "#{@msg[:hinter_rule]}: #{@goal[:target].length+3}"
             @hinted = true
         end
 
@@ -95,7 +95,7 @@ class SoloGame
         end
 
         @goal[:attempts] = @goal[:answers].length
-        @goal[:remaining] = @goal[:targets][0].length - @goal[:answers].length
+        @goal[:remaining] = @goal[:targets][0].length - @goal[:answers].length + 3
 
         wrongs = @goal[:answers] - @goal[:targets][0]
         wrongs.uniq!
@@ -127,7 +127,6 @@ class SoloGame
             @win = true
         end
 
-
         score = {secret: displays.join(" "),
             points: rights.count*10,
             right: rights.join(" "),
@@ -136,42 +135,35 @@ class SoloGame
             attempts: @goal[:attempts],
             remaining: @goal[:remaining]
         }
-
         umpire(score)
     end
 
-
     def umpire(score)
         if @win
-            puts "#{@clear}#{@divider}Congratulations!  You get 100 Bonus Points!\n"
-            puts "You guessed the Secret Word: #{@goal[:target]}"
+            puts "#{@msg[:ump_win_msg]} #{@goal[:target]}"
             score_printer(score)
             return
         end
 
         if score[:remaining] == 0
-            puts "#{@clear}#{@divider}Game Over!  You reached the maximum attempts! (#{score[:attempts]})"
+            puts "#{@msg[:ump_0_msg]} #{(score[:attempts])}"
             puts "The Secret Word is: #{@goal[:target]}"
             score_printer(score)
             return
         end
 
         if !@fail
-            puts "#{@clear}#{@divider}Wow!  The letter you guessed is correct!\nKeep going!  You're on a winning streak."
-            puts "You still have #{@goal[:remaining]} more guesses."
+            puts "#{@msg[:ump_success_msg]} #{@goal[:remaining]}"
             score_printer(score)
             hinter
         else
-            puts "#{@clear}#{@divider}Yikes!  That's the wrong answer.\nDon't worry.  You can guess again."
-            puts "You still have #{@goal[:remaining]} more guesses."
+            puts "#{@msg[:ump_fail_msg]} #{@goal[:remaining]}"
             score_printer(score)
             hinter
         end
     end
 
-
     def score_printer(score)
-        # puts @divider
         puts "\n\nSecret Word: #{score[:secret]}\n\n"
         puts "ScoreBoard..."
         puts "Point Total: #{score[:points]}"
@@ -181,7 +173,6 @@ class SoloGame
         puts "Total Attempts: #{score[:attempts]}"
         puts "Remaining Attempts: #{score[:remaining]}"
     end
-
 
     def voweler(str)
         str.scan(/[aeoui]/).count
