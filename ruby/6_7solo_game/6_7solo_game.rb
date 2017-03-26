@@ -14,19 +14,28 @@ class SoloGame
                 hinter_list: "\n\nHere are a few hints about the secret word...",
                 guesser_prompt: "Please guess a letter or the whole word..."
             }
-        @goal_hash = {}
+        @goal = {}
         @hinted = false
+        @success = false
     end
 
     def welcome_p1
         puts @msg[:wel1_target]
-        @goal_hash[:target] = gets.chomp
+
+        target = gets.chomp
+        @goal[:target] = target
+
+        targets = []
+        hiddens = []
+
+        @goal[:targets] = targets.push(target.split(""))
+        @goal[:hiddens] = hiddens.push(target.split(""))
 
         puts @msg[:wel1_cat]
-        @goal_hash[:cat] = gets.chomp
+        @goal[:cat] = gets.chomp
 
         puts @msg[:wel1_uniq]
-        @goal_hash[:unique] = gets.chomp
+        @goal[:unique] = gets.chomp
     end
 
     def welcome_p2
@@ -34,19 +43,20 @@ class SoloGame
         puts @msg[:wel2_yn]
         pass = false
 
-        while pass == false
-            confirm = gets.chomp
-            if confirm.downcase == "y"
+        # while pass == false
+        #     confirm = gets.chomp
+        #     if confirm.downcase == "y"
                 hinter
-                pass = true
-            elsif confirm.downcase == "n"
-                puts @msg[:wel2_bye]
-                return
-            else
-                puts "\n\nSorry #{player2}, #{confirm} is an invalid response."
-                puts @msg[:wel2_yn]
-            end
-        end
+        #         pass = true
+        #     elsif confirm.downcase == "n"
+        #         puts @msg[:wel2_bye]
+        #         return
+        #     else
+        #         puts "\n\nSorry #{player2}, #{confirm} is an invalid response."
+        #         puts @msg[:wel2_yn]
+        #     end
+        # end
+
     end
 
     def hinter
@@ -55,13 +65,15 @@ class SoloGame
             @hinted = true
         end
 
+        if @hinted && @success
+            puts "Congratulations!\nNice guess!\nTry to guess another letter!"
+        end
+
         puts @msg[:hinter_list]
-
-        puts "Length: #{@goal_hash[:target].length}"
-        puts "Vowels: #{vowels = voweler(@goal_hash[:target])}"
-        puts "Category: #{@goal_hash[:cat]}"
-        puts "Unique: #{@goal_hash[:unique]}"
-
+        puts "Length: #{@goal[:target].length}"
+        puts "Vowels: #{vowels = voweler(@goal[:target])}"
+        puts "Category: #{@goal[:cat]}"
+        puts "Unique: #{@goal[:unique]}"
         guesser
     end
 
@@ -72,27 +84,49 @@ class SoloGame
     end
 
     def logic(answer)
-        targets = @goal_hash[:target].split("")
-        hiddens = @goal_hash[:target].split("")
-        displays = []
-        answers = []
+        unless @goal[:answers]
+            @goal[:answers] = []
+        end
+        @goal[:answers] << answer
+        puts "1 >>>>>>>>>>> @goal[:answers #{@goal[:answers}"
 
-        answers << answer
-        wrongs = answers - targets
-        answers.each{|x| hiddens.delete(x)}
-        rights = targets - hiddens
+        wrongs = @goal[:answers] - @goal[:targets]
+        puts "2 >>>>>>>>>>> wrongs #{wrongs}"
+        puts "3 >>>>>>>>>>> @goal[:hiddens] #{@goal[:hiddens]}"
+
+        @goal[:answers].each{|x| @goal[:hiddens].delete(x)}
+        puts "4 >>>>>>>>>>> @goal[:hiddens] #{@goal[:hiddens]}"
+
+        rights = @goal[:targets] - @goal[:hiddens]
+        puts "5 >>>>>>>>>>> rights #{rights}"
+
         points = rights.count*10
 
-        targets.each do |x|
-            if hiddens.include?(x)
+        displays = []
+        @goal[:targets].each do |x|
+            puts "6 >>>>>>>>>>> displays.push x #{x}"
+
+            if @goal[:hiddens].include?(x)
+                puts "7 >>>>>>>>>>> ' _ ' "
                 displays.push(" _ ")
             else
+                puts "8 >>>>>>>>>>> displays.push #{x} "
                 displays.push(" #{x} ")
             end
         end
 
-        score = {secret: displays.join(""), points: rights.count*10, right: rights.join(" "), wrong: wrongs.join(" "), total: answers.join(" ")}
+        score = {secret: displays.join(" "),
+            points: rights.count*10,
+            right: rights.join(" "),
+            wrong: wrongs.join(" "),
+            total: @goal[:answers].join(" ")
+        }
+
+        @success = true
         score_printer(score)
+    end
+
+    def umpire
     end
 
     def score_printer(score)
@@ -105,6 +139,7 @@ class SoloGame
         puts "Wrong Letters: #{score[:wrong]}"
         puts "Total Letters Entered: #{score[:total]}"
         puts divider
+        hinter
     end
 
     def voweler(str)
