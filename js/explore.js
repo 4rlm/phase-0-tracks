@@ -1,4 +1,4 @@
-console.log("Hello world!");
+// console.log("Hello world!");
 
 // command line:
 // node test.js
@@ -14,12 +14,23 @@ console.log("Hello world!");
 // 7 Call the function inside console.log(var) to print in terminal.
 
 
+
+var forward = 'hello';
+weather = "rainy"
+// weather = "sunny"
+
+
 function reverseString(str) {
     return str.split("").reverse().join("");
 }
 
-var forward = 'hello';
 var reverse = reverseString(forward);
-var statement = 'The reverse of ' + forward + ' is ' + reverse + '.'
+var reverse_statement = 'The reverse of ' + forward + ' is ' + reverse + '.'
+var normal_statement = "Sorry.  I only reverse words on rainy days.  Come back when it's raining."
 
-console.log(statement);
+
+if (weather == "rainy") {
+  console.log(reverse_statement);
+} else {
+    console.log(normal_statement);
+}
