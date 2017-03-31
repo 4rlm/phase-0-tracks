@@ -1,49 +1,48 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge [with: Mentor Aji ].
+# We spent [1] hours on this challenge, but I spent about 3 hours in total.
 
 # EXPLANATION OF require_relative
-#
-#
+# Allows other files in dir to be used as if they were all the same file.  Different than require, which is for resources outside of dir.
+
 require_relative 'state_data'
 
 class VirusPredictor
 
+# Creates instance variables, which can be accessed inside of methods without need to pass them as arguments.  Global scope within class only.
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
     @population_density = population_density
   end
 
+#Calls predicted_deaths and speed_of_spread methods and prints results.
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    print "#{@state} will lose #{predicted_deaths} people in this outbreak and will spread across the state in #{speed_of_spread} months.\n\n"
   end
 
+# Methods below private can not be accessed by public.
   private
 
-  def predicted_deaths(population_density, population, state)
-    # predicted deaths is solely based on population density
+# predicted deaths is solely based on population density
+  def predicted_deaths
     if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
+      death_calc(0.4)
     elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
+      death_calc(0.3)
     elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
+      death_calc(0.2)
     elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
+      death_calc(0.1)
     else
-      number_of_deaths = (@population * 0.05).floor
+      death_calc(0.05)
     end
-
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
   end
 
-  def speed_of_spread(population_density, state) #in months
-    # We are still perfecting our formula here. The speed is also affected
-    # by additional factors we haven't added into this functionality.
+# We are still perfecting our formula here. The speed is also affected
+# by additional factors we haven't added into this functionality.
+  def speed_of_spread #in months
     speed = 0.0
 
     if @population_density >= 200
@@ -57,31 +56,28 @@ class VirusPredictor
     else
       speed += 2.5
     end
+  end
 
-    puts " and will spread across the state in #{speed} months.\n\n"
-
+# Calculator to make code more DRY.
+  def death_calc(int)
+    (@population * int).floor
   end
 
 end
 
 #=======================================================================
+# Driver Code
 
-# DRIVER CODE
- # initialize VirusPredictor for each state
-
-
-alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
-alabama.virus_effects
-
-jersey = VirusPredictor.new("New Jersey", STATE_DATA["New Jersey"][:population_density], STATE_DATA["New Jersey"][:population])
-jersey.virus_effects
-
-california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
-california.virus_effects
-
-alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
-alaska.virus_effects
+STATE_DATA.each do |state, value|
+  target_state = VirusPredictor.new(state, value[:population_density], value[:population])
+  target_state.virus_effects
+end
 
 
 #=======================================================================
 # Reflection Section
+# There is a hash inside a hash in STATE_DATA
+# require_relative mentioned above.
+# Iterated through the hash above in driver code.
+# Nothing stood out about the variables, except that they were not needed as we could use instance variables instead.
+# I enjoyed all concepts.  It was good practice to work with a hash in a hash and the rspec, which I did as a bonus was different than I've done before.
