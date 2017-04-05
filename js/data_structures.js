@@ -1,21 +1,21 @@
 ///////////////////////////////
 // 7.2 Release 0
 
-var Names = ["Buddy", "Dakota", "Magic", "Rocky"]
-var Colors = ["black", "brown", "tan", "white"]
+var Names = ["Buddy", "Dakota", "Magic", "Rocky"];
+var Colors = ["black", "brown", "tan", "white"];
 
 function itemAdder(item, array) {
     return array.push(item);
 }
 
-var NewName = "Lucky"
-itemAdder(NewName, Names)
+var NewName = "Lucky";
+itemAdder(NewName, Names);
 
-var NewColor = "beige"
-itemAdder(NewColor, Colors)
+var NewColor = "beige";
+itemAdder(NewColor, Colors);
 
-console.log(Names)
-console.log(Colors)
+// console.log(Names);
+// console.log(Colors);
 
 ///////////////////////////////
 // 7.2 Release 1
@@ -29,7 +29,8 @@ for(var i = 0; i < names.length; i++){
     horses[names[i]] = colors[i];
 }
 
-console.log(horses);
+// console.log(horses);
+
 
 ///////////////////////////////
 // 7.2 Release 2
