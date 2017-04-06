@@ -13,7 +13,9 @@ FROM
 WHERE
   users.id = reviews.user_id
 AND
-  businesses.id = reviews.business_id;
+  businesses.id = reviews.business_id
+AND
+  businesses.name="Lotus Yoga";
 
 #####################
 Query Result:
