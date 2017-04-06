@@ -1,0 +1,26 @@
+#####################
+Query:
+#####################
+
+SELECT
+  users.first_name,
+  users.last_name,
+  businesses.name,
+  reviews.stars,
+  reviews.comment
+FROM
+  users, businesses, reviews
+WHERE
+  users.id = reviews.user_id
+AND
+  businesses.id = reviews.business_id;
+
+#####################
+Query Result:
+#####################
+Bradford|Pitt|Grundy Hollow Wedding Chapel|5|Wonderful Chapel!
+Denzel|George|Amir's Towing|4|Great towing! Gave my kids chocolate, too.
+Steven|Wonder|Lotus Yoga|3|Skilled instructors, but smell really bad.
+Holly|Berry|Grundy Hollow Wedding Chapel|2|Cute chapel, but always asking for donations.
+Angela|Jolie|The Beagle Nightclub|1|Too many creeps checking me out.
+Bradford|Pitt|Plumbing by Janet|0|Spilled dirty toilet water all over the bathroom.

@@ -1,0 +1,30 @@
+Release 3: Draw a Schema
+Come up with an example of a real-world many-to-many relationship. Using whatever medium you prefer (online diagramming tool, pen and paper, etc.), draw a schema showing how you would set up this many-to-many relationship in a database. Save a screenshot or picture of your schema in the welp directory.
+
+1) books
+2) authors
+3) books_authors
+
+#########################
+
+CREATE TABLE books(
+  id INTEGER PRIMARY KEY,
+  book_name VARCHAR(255),
+  book_desc VARCHAR(255),
+  price DECIMAL
+);
+
+CREATE TABLE authors(
+  id INTEGER PRIMARY KEY,
+  author_name VARCHAR(255)
+);
+
+CREATE TABLE books_authors(
+  id INTEGER PRIMARY KEY,
+  book_id INT,
+  author_id INT,
+  FOREIGN KEY(book_id) REFERENCES books(id),
+  FOREIGN KEY(author_id) REFERENCES authors(id)
+);
+
+#########################
