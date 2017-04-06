@@ -1,3 +1,5 @@
+*** Completed Release 0 and most of 1.
+Need to do Release 1, #2: Populate both tables with enough data to make queries interesting (a few items per table at least).
 
 Schema Ideas for Orders:
 ######################
