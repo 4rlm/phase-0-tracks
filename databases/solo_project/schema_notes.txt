@@ -1,40 +1,33 @@
-*** Completed Release 0 and most of 1.
-Need to do Release 1, #2: Populate both tables with enough data to make queries interesting (a few items per table at least).
-
-Schema Ideas for Orders:
+Schema for Orders.db:
 ######################
 
+  CREATE TABLE customers(
+    id INTEGER PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    address VARCHAR(255),
+    order_id INT,
+    FOREIGN KEY(order_id) REFERENCES orders(id)
+  );
 
-CREATE TABLE orders(
-id integer primary key,
-customer_id INT,
-date TIMESTAMP,
-price FLOAT,
-shipped BOOLEAN
-);
-
-CREATE TABLE customers(
-  id INTEGER PRIMARY KEY,
-  first_name VARCHAR(255),
-  last_name VARCHAR(255),
-  address_name VARCHAR(255),
-  order_id INT,
-  FOREIGN KEY(order_id) REFERENCES orders(id)
-);
-
+  CREATE TABLE orders(
+    id integer primary key,
+    customer_id INT,
+    date TIMESTAMP DATETIME,
+    price FLOAT,
+    shipped BOOLEAN,
+    FOREIGN KEY(customer_id) REFERENCES customers(id)
+  );
 
 ######################
+  INSERT INTO customers (first_name, last_name, address, order_id) VALUES ("Adam", "Booth", "1234 Main St, Naperville, IL 60563", 5);
+  INSERT INTO customers (first_name, last_name, address, order_id) VALUES ("Gahee", "Heo", "4321 Buena Vista Dr, Austin, TX 75303", 4);
+  INSERT INTO customers (first_name, last_name, address, order_id) VALUES ("Easter", "Bunny", "1357 Candy Egg Blvd, San Diego, CA 90210", 3);
+  INSERT INTO customers (first_name, last_name, address, order_id) VALUES ("Santa", "Claus", "1 Cold St., N Pole, NP 99999", 2);
+  INSERT INTO customers (first_name, last_name, address, order_id) VALUES ("Thomas", "Jefferson", "2323 Montecello St, Alexandria, VA 02030", 1);
 
-
-CREATE TABLE teams(
-id integer primary key,
-name varchar(255)
-);
-
-CREATE TABLE players(
-id integer primary key,
-name varchar(255),
-number int,
-team_id int,
-foreign key(team_id) references teams(id)
-);
+  INSERT INTO orders(customer_id, date, price, shipped) VALUES(5, datetime('now'), 5.25, "true");
+  INSERT INTO orders(customer_id, date, price, shipped) VALUES(4, datetime('now'), 19.72, "false");
+  INSERT INTO orders(customer_id, date, price, shipped) VALUES(3, datetime('now'), 23.31, "true");
+  INSERT INTO orders(customer_id, date, price, shipped) VALUES(2, datetime('now'), 57.84, "false");
+  INSERT INTO orders(customer_id, date, price, shipped) VALUES(1, datetime('now'), 74.03, "true");
