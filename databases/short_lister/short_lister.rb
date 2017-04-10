@@ -54,7 +54,7 @@ end
 def apt_viewer(db)
   apts = db.execute("SELECT * FROM apt_list")
   apts.each do |apt|
-    puts "\n\nApt #{apt['id']}) #{apt['name']}, located at #{apt['address']} is rated #{apt['rating']} because it's #{apt['comments']}.\nThe monthly rent is in the range of #{apt['rent_range']} and includes #{apt['amenities']} with an average rush-hour commute time of #{apt['commute']} minutes."
+    puts "\n\nApt #{apt['id']}) #{apt['name']}, located at #{apt['address']} is rated #{apt['rating']} because #{apt['comments']}.\nThe monthly rent is in the range of #{apt['rent_range']} and includes #{apt['amenities']} with an average rush-hour commute time of #{apt['commute']} minutes."
   end
 end
 
@@ -67,6 +67,7 @@ def prompter(db)
   elsif input.downcase == "view"
     apt_viewer(db)
   end
+
 end
 
 prompter(db)
