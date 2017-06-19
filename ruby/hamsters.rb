@@ -3,7 +3,7 @@ vol_level = nil
 vol_level.to_i
 fur_color = nil
 condition = nil
-condition.to_1
+condition.to_i
 age = nil
 age.to_i
 

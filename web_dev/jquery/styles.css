@@ -1,0 +1,68 @@
+#nav ul li {
+  color: blue;
+  list-style: none;
+  text-align: center;
+  display: inline-block;
+  width: 29%;
+  padding: 10px;
+}
+
+#nav ul {
+  background: yellow;
+  list-style-type: none;
+  width: 95%;
+  border: 1px solid #555;
+}
+
+#nav li a {
+    display: block;
+    width: 60px;
+}
+
+#intro {
+  border: 1px solid black;
+}
+
+#intro h1, #intro h3, #intro p{
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+
+#intro h1 {
+  background: red;
+  color: yellow;
+}
+
+#intro p {
+  background: yellow;
+  color: red;
+}
+
+.boxes {
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+#box1 {
+  background: gray;
+}
+
+#box2 {
+  background: pink;
+}
+
+#box3 {
+  background: green;
+}
+
+.boxes h3 {
+  background: blue;
+  color: white;
+  margin: 0;
+}
